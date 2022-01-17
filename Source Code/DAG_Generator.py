@@ -25,10 +25,10 @@ def config_reader(device_id,type,flag):
         for i, line in enumerate(open('configuration.netsim')):
             try:
                 if l_flag==0:
-                    found=re.search("<DEVICE DEFAULT_DEVICE_NAME=\"Gateway\" DEVICE_ID=\"(.+?)\" DEVICE_IMAGE=\"6LowPANGateway.png\" DEVICE_NAME=\"(.+?)\" DEVICE_TYPE=\"LOWPAN_Gateway\" INTERFACE_COUNT=\"2\" TYPE=\"SINKNODE\">",line).group(1,2)
+                    found=re.search("<DEVICE DEFAULT_DEVICE_NAME=\"Gateway\" DEVICE_ID=\"(.+?)\" DEVICE_IMAGE=\"(.+?)\" DEVICE_NAME=\"(.+?)\" DEVICE_TYPE=\"LOWPAN_Gateway\" INTERFACE_COUNT=\"2\" TYPE=\"SINKNODE\">",line).group(1,2,3)
                     
                     if device_id in found[0]:
-                        device_name=found[1]
+                        device_name=found[2]
                         l_flag+=1
                         #print(found)
                 else:
@@ -46,10 +46,10 @@ def config_reader(device_id,type,flag):
         for i, line in enumerate(open('configuration.netsim')):
             try:
                 if l_flag==0:
-                    found=re.search("<DEVICE DEFAULT_DEVICE_NAME=\"(.+?)\" DEVICE_ID=\"(.+?)\" DEVICE_IMAGE=\"WirelessSensor.png\" DEVICE_NAME=\"(.+?)\" DEVICE_TYPE=\"IOT_Sensors\" INTERFACE_COUNT=\"1\" TYPE=\"SENSOR\"",line).group(1,2,3)
+                    found=re.search("<DEVICE DEFAULT_DEVICE_NAME=\"(.+?)\" DEVICE_ID=\"(.+?)\" DEVICE_IMAGE=\"(.+?)\" DEVICE_NAME=\"(.+?)\" DEVICE_TYPE=\"IOT_Sensors\" INTERFACE_COUNT=\"1\" TYPE=\"SENSOR\"",line).group(1,2,3,4)
                     
                     if device_id in found[1]:
-                        device_name=found[2]
+                        device_name=found[3]
                         l_flag+=1
                         #print(found)
                 elif l_flag==1:
